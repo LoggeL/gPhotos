@@ -7,7 +7,7 @@ fetch('api/album' + albumID).then(response => response.json().then(pictures => {
     new Pig(imageData, {
         urlForSize: function (filename, size) {
             if (size == "20") return '/assets/thumb.svg'
-            return filename + "=w" + size;
+            return filename + "=w" + size * window.devicePixelRatio;
         },
         onClickHandler: function (filename) {
             const width = pictures.find(picture => picture.url === filename).width
